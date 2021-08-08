@@ -1,0 +1,78 @@
+<h2>Osnovne informacije o incidentu</h2>
+<table>
+    <tr>
+        <td>ID: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.id" #id/></td>   
+        <td>Ime: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.name" #name/></td>
+    </tr>
+    <tr>
+        <td>Tip: </td>
+        <td>
+        <select type="text" [(ngModel)] = "basic_inf.tip" #tip>
+                
+            <option value = "Planiran">PLANIRAN</option>
+            <option value = "Neplaniran">NEPLANIRAN</option>
+        
+        </select>
+        </td>
+
+        <td>Prioritet: </td>
+        <td>
+        <input type="number" [(ngModel)] = "basic_inf.priority" #priority/>
+                
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <label>
+        <input type="checkbox" [(ngModel)] = "basic_inf.confirmed" #confirmed  [checked]="basic_inf.confirmed == true"/> Confirmed
+        </label>
+        </td>
+        <td></td>
+        <td>Opis: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.description" #description/></td>
+    </tr>
+    <tr>
+        <td>Napon: </td>
+        <td><input type="number" [(ngModel)] = "basic_inf.voltage" #voltage/> kW </td>
+        <td>Br. poziva: </td>
+        <td><input type="number" [(ngModel)] = "basic_inf.calls" #calls/> </td>
+    </tr>
+    <tr>
+        <td>ATA: </td>
+        <td>
+            <input type="date" class="form-control"
+            [(ngModel)]="basic_inf.ata"/>
+        </td>
+        <td>ETA: </td>
+        <td>
+            <input type="date" class="form-control"
+            [(ngModel)]="basic_inf.eta"/>
+        </td>
+    </tr>
+    <tr>
+        <td>ETR: </td>
+        <td>
+            <input type="date" class="form-control"
+            [(ngModel)]="basic_inf.etr"/>
+        </td>
+        <td>Vreme isključenja: </td>
+        <td>
+            <input type="date" class="form-control"
+            [(ngModel)]="basic_inf.outage_time"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Adresa: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.adresa" #adresa/></td>
+        <td>Afektovani potrosaci: </td>
+        <td><input type="number" [(ngModel)] = "basic_inf.affected_customers" #affected_customers/></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><input type="button" class="btn btn-success" value = "Next" routerLink = "/app/new-incident-resenje"/></td>
+        <td><input type="button" class="btn btn-success" value = "Back" routerLink = "/app/incidents"/></td>
+    </tr>
+</table>

@@ -1,0 +1,31 @@
+<h2>Osnovne informacije o dokumentu</h2>
+<table>
+    <tr>
+        <td>ID: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.id" #id/></td>   
+        <td>Ime: </td>
+        <td><input type="text" [(ngModel)] = "basic_inf.ime" #ime/></td>
+    </tr>
+    <tr>
+        <td>Tip: </td>
+        <td>
+        <select type="text" [(ngModel)] = "basic_inf.tip" #tip>
+                
+            <option value = "Planiran">PLANIRAN</option>
+            <option value = "Neplaniran">NEPLANIRAN</option>
+        
+        </select>
+        </td>
+
+        <td>Plan rada: </td>
+        <td>
+        <input type="string" [(ngModel)] = "basic_inf.plan_rada" #plan_rada/>
+           
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><input type="button" class="btn btn-success" value = "Next" routerLink = "/app/new-document-checklist"/></td>
+        <td><input type="button" class="btn btn-success" value = "Back" routerLink = "/app/documents"/></td>
+    </tr>
+</table>

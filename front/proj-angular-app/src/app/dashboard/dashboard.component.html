@@ -1,0 +1,58 @@
+<style>
+    .grid-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 85px 85px 85px 85px;
+}
+
+*{
+    box-sizing: border-box
+}
+
+</style>
+
+
+
+<div class="grid-container">
+    <div class="main__cards">
+        <a routerLink="app/incidents">
+          <div class="card">
+            <div class="card_inner">
+              <span class="font-bold text-title">MY INCIDENTS</span>
+              <div>
+                 
+                  <small class="ml-1"><b>3</b></small>
+              </div>
+            </div>
+            <hr/>
+            <div class="card_inner">
+                <div>
+                  <small class="mt-2"><b>2</b> Vreme<br/></small>
+                  <small class="mt-2"><b>1</b> Ljudski faktor<br/></small>
+                  <small class="mt-2"><b>1</b> Otkaz<br/></small>
+                </div>
+            </div>
+          </div>
+        </a>
+        <a routerLink='app/documents'>
+          <div class="card">
+            <div class="card_inner">
+              <span class="font-bold text-title">MY SAFETY DOCS</span>
+              <div>
+                  
+                  <small class="ml-1"><b></b></small>
+              </div>
+            </div>
+            <hr/>
+            <div class="card_inner">
+                <div>
+                  <small class="mt-2"><b></b> Planiran<br/></small>
+                  <small class="mt-2"><b></b> Neplaniran<br/></small>
+                </div>
+            </div>
+          </div>
+        </a>
+    
+</div>
+
+<router-outlet></router-outlet>

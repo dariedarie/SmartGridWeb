@@ -1,0 +1,93 @@
+<style>
+    td, th {
+    padding: 0 40px;
+  }
+  
+  .headcol {
+    position: absolute;
+    width: 5em;
+    left: 0;
+    top: auto;
+    border-top-width: 1px;
+    /*only relevant for first row*/
+    margin-top: -1px;
+    /*compensate for top border*/
+  }
+  </style>
+  
+  <head><script src="fixedColumnTable.directive.js"></script></head>
+  
+  <div [hidden]="pickedElements.length !== 0">
+      <p>Trenutno nema učitanih elemenata</p>
+  </div>
+  
+  <div style="overflow-x: scroll;" [hidden]="pickedElements.length === 0">
+      <table style="border: 1px rgb(73, 73, 129)" class="table table-hover" fixed-column-table fixed-columns="3">
+          <thead>
+              <tr style="background-color: lightslategray;">
+                  <th scope="col" style="position:sticky; left: 0; background-color: lightslategray;">Id</th>
+                  <th scope="col">Tip</th>
+                  <th scope="col">Naziv</th>
+                  <th scope="col">Adresa</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let element of pickedElements | paginate: config">
+                  <td style="position:sticky; left: 0; background-color: lightblue;">{{element.id}}</td>
+                  <td>{{element.tip}}</td>
+                  <td>{{element.naziv}}</td>
+                  <td>{{element.adresa}}</td>
+                  
+              </tr>
+          </tbody>
+      </table>
+      
+      
+  </div>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <div><button (click) = "dodajOpremu()"  class="btn btn-success" data-toggle="modal" data-target="#dodavanje">Dodaj opremu</button></div>
+
+    <input type="button" class="btn btn-success" value = "Back" routerLink = "/app/new-document-media"/>
+    <input type="button" class="btn btn-success" value = "Complete" (click) = "submit()"/> 
+      
+        
+  <div class="modal fade" id="dodavanje" tabindex="-1" role="dialog" aria-labelledby="dodavanje" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="login">Dodavanje elemenata u incident</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="overflow-x: scroll;" [hidden]="allElements.length === 0">
+                    <table style="border: 1px rgb(73, 73, 129)" class="table table-hover" fixed-column-table fixed-columns="3">
+                        <thead>
+                            <tr style="background-color: lightslategray;">
+                                <th scope="col" style="position:sticky; left: 0; background-color: lightslategray;">Id</th>
+                                <th scope="col">Tip</th>
+                                <th scope="col">Naziv</th>
+                                <th scope="col">Adresa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let element of allElements | paginate: configModal">
+                                <td style="position:sticky; left: 0; background-color: lightblue;">{{element.id}}</td>
+                                <td>{{element.tip}}</td>
+                                <td>{{element.naziv}}</td>
+                                <td>{{element.adresa}}</td>
+                                <td>
+                                  <button class="btn btn-success" (click) = "dodajElement(element.id)">Dodaj</button>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <pagination-controls (pageChange)="pageChanged2($event)"></pagination-controls>
+              
+            </div>
+        </div>
+    </div>
+  </div>

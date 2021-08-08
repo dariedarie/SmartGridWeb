@@ -1,0 +1,89 @@
+<style>
+  td, th {
+  padding: 0 40px;
+}
+
+.headcol {
+  position: absolute;
+  width: 5em;
+  left: 0;
+  top: auto;
+  border-top-width: 1px;
+  /*only relevant for first row*/
+  margin-top: -1px;
+  /*compensate for top border*/
+}
+</style>
+
+<head><script src="fixedColumnTable.directive.js"></script></head>
+
+<h2>Svi incidenti u sistemu</h2>
+
+<div [hidden]="allIncidents.length !== 0">
+    <p>Trenutno nema učitanih incidenata</p>
+</div>
+
+<div style="overflow-x: scroll;" [hidden]="allIncidents.length === 0 && myIncidentsChecked === true">
+    <table style="border: 1px blue" class="table table-hover" fixed-column-table fixed-columns="3">
+        <thead>
+            <tr style="background-color: lightslategray;">
+                <th scope="col" style="position:sticky; left: 0; background-color: lightslategray;">Id</th>
+                <th scope="col">Datum iskljucenja</th>
+                <th scope="col">Tip</th>
+                <th scope="col">Adresa</th>
+                <th scope="col">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let incident of allIncidents | paginate: config">
+                <td style="position:sticky; left: 0; background-color: lightblue;">{{incident.id}}</td>
+                <td>{{incident.outage_time | date: 'MMM d,y'}}</td>
+                <td>{{incident.tip}}</td>
+                <td>{{incident.adresa}}</td>
+                
+                <td>
+                    <button (click) = "brisanje(incident)" class="btn btn-success">Brisanje</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+<div><button (click) = "noviIncident()"  class="btn btn-success">Novi incident</button></div>
+  <div><button (click) = "sortiranje()"  class="btn btn-success">Sortiraj</button></div>
+
+
+<h2>Moji incidenti</h2>
+
+<div [hidden]="myIncidents.length !== 0">
+    <p>Trenutno nema učitanih incidenata</p>
+</div>
+
+<div style="overflow-x: scroll;" [hidden]="myIncidents.length === 0">
+    <table style="border: 1px blue" class="table table-hover" fixed-column-table fixed-columns="3">
+        <thead>
+            <tr style="background-color: lightslategray;">
+                <th scope="col" style="position:sticky; left: 0; background-color: lightslategray;">Id</th>
+                <th scope="col">Datum iskljucenja</th>
+                <th scope="col">Tip</th>
+                <th scope="col">Adresa</th>
+                <th scope="col">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let incident of myIncidents | paginate: config2">
+                <td style="position:sticky; left: 0; background-color: lightblue;">{{incident.id}}</td>
+                <td>{{incident.outage_time | date: 'MMM d,y'}}</td>
+                <td>{{incident.tip}}</td>
+                <td>{{incident.adresa}}</td>
+                
+                <td>
+                    <button class="btn btn-success">Izmena</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<pagination-controls (pageChange)="pageChanged2($event)"></pagination-controls>

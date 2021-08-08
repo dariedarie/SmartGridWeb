@@ -1,0 +1,120 @@
+<style>
+    td, th {
+    padding: 0 40px;
+  }
+  
+  .headcol {
+    position: absolute;
+    width: 5em;
+    left: 0;
+    top: auto;
+    border-top-width: 1px;
+    /*only relevant for first row*/
+    margin-top: -1px;
+    /*compensate for top border*/
+  }
+  </style>
+  
+  <head><script src="fixedColumnTable.directive.js"></script></head>
+  
+  <div [hidden]="allDocuments.length !== 0">
+      <p>Trenutno nema učitanih incidenata</p>
+  </div>
+  
+  <div style="overflow-x: scroll;" [hidden]="allDocuments.length === 0">
+      <table style="border: 1px blue" class="table table-hover" fixed-column-table fixed-columns="3">
+          <thead>
+              <tr style="background-color: lightslategray;">
+                  <th scope="col" style="position:sticky; left: 0; background-color: lightslategray;">Id</th>
+                  <th scope="col">Ime</th>
+                  <th scope="col">Tip</th>
+                  <th scope="col">Plan rada</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let document of allDocuments | paginate: config">
+                  <td style="position:sticky; left: 0; background-color: lightblue;">{{document.id}}</td>
+                  <td>{{document.ime}}</td>
+                  <td>{{document.tip}}</td>
+                  <td>{{document.plan_rada}}</td>
+                  <td>
+                      <button (click) = "izmena(document)" data-toggle="modal" data-target="#izmena" class="btn btn-success">Izmena</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      
+  </div>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <div><button (click) = "noviDokument()"  class="btn btn-success">Novi dokument</button></div>
+  <div><button (click) = "sortiranje()"  class="btn btn-success">Sortiraj</button></div>
+
+
+  <div class="modal fade" id="izmena" tabindex="-1" role="dialog" aria-labelledby="izmena" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="login">Izmena elementa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+    
+                    <tr>
+                        <td>Naziv: </td>
+                        <td><input type="text" [(ngModel)] = "documentToChange.ime" #ime/></td>
+                    </tr>
+                    <tr>
+                        <td>Tip: </td>
+                        <td>
+                        <select type="text" [(ngModel)] = "documentToChange.tip" #tip>
+                                
+                            <option value = "Planiran">planiran</option>
+                            <option value = "Neplaniran">neplaniran</option>
+                            
+                        
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Plan rada: </td>
+                        <td><input type="plan_rada" [(ngModel)] = "documentToChange.plan_rada" #plan_rada/></td>
+                    </tr>
+                    <tr>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "documentToChange.allOpsCompleted"  [checked]="documentToChange.allOpsCompleted == true"/> All operations completed
+            </label>
+        </td>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "documentToChange.allTagsRemoved"  [checked]="documentToChange.allTagsRemoved == true"/> All tags removed
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "documentToChange.groundingRemoved"  [checked]="documentToChange.groundingRemoved == true"/> Grounding removed
+            </label>
+        </td>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "documentToChange.readyForService"  [checked]="documentToChange.readyForService == true"/> Ready for service
+            </label>
+        </td>
+    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="button" value = "Izmeni" (click) = "IzmeniDokument()"/></td>
+                    </tr>
+                    </table>
+                    
+                
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+<table>
+    <tr>
+        <td>ID: </td>
+        <td><input type="text" [(ngModel)] = "el.id" #id/></td>
+    </tr>
+    <tr>
+        <td>Naziv: </td>
+        <td><input type="text" [(ngModel)] = "el.naziv" #naziv/></td>
+    </tr>
+    <tr>
+        <td>Tip: </td>
+        <td>
+        <select type="text" [(ngModel)] = "el.tip" #tip>
+                
+            <option value = "Transformator">Transformator</option>
+            <option value = "Prekidac">Prekidač</option>
+            <option value = "Osigurac">Osigurač</option>
+            <option value = "Diskonektor">Diskonektor</option>
+        
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Adresa: </td>
+        <td><input type="text" [(ngModel)] = "el.adresa" #adresa/></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><input type="button" value = "Dodaj" (click) = "DodajElement()"/></td>
+    </tr>
+</table>

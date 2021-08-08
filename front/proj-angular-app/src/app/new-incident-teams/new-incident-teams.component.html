@@ -1,0 +1,82 @@
+<style>
+    td, th {
+    padding: 0 40px;
+  }
+  
+  .headcol {
+    position: absolute;
+    width: 5em;
+    left: 0;
+    top: auto;
+    border-top-width: 1px;
+    /*only relevant for first row*/
+    margin-top: -1px;
+    /*compensate for top border*/
+  }
+  </style>
+  
+  <head><script src="fixedColumnTable.directive.js"></script></head>
+  
+  <div [hidden]="pickedTeams.length !== 0">
+      <p>Trenutno nema učitanih timova</p>
+  </div>
+  
+  <div style="overflow-x: scroll;" [hidden]="pickedTeams.length === 0">
+      <table style="border: 1px rgb(73, 73, 129)" class="table table-hover" fixed-column-table fixed-columns="3">
+          <thead>
+              <tr style="background-color: lightslategray;">
+                  <th scope="col">Naziv</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let element of pickedTeams | paginate: config">
+                  <td>{{element.ime_tima}}</td>
+              </tr>
+          </tbody>
+      </table>
+      
+      
+  </div>
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  <div><button (click) = "dodajTimove()"  class="btn btn-success" data-toggle="modal" data-target="#dodavanje">Dodaj timove</button></div>
+
+    <input type="button" class="btn btn-success" value = "Back" routerLink = "/app/new-incident-resenje"/>
+    <input type="button" class="btn btn-success" value = "Next" routerLink = "/app/new-incident-media"/> 
+      
+        
+  <div class="modal fade" id="dodavanje" tabindex="-1" role="dialog" aria-labelledby="dodavanje" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="login">Dodavanje elemenata u incident</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="overflow-x: scroll;" [hidden]="allTeams.length === 0">
+                    <table style="border: 1px rgb(73, 73, 129)" class="table table-hover" fixed-column-table fixed-columns="3">
+                        <thead>
+                            <tr style="background-color: lightslategray;">
+                                <th scope="col">Naziv</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tim of allTeams | paginate: configModal">
+                                
+                                <td>{{tim.ime_tima}}</td>
+                                
+                                <td>
+                                  <button class="btn btn-success" (click) = "dodajTim(tim.ime_tima)">Dodaj</button>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <pagination-controls (pageChange)="pageChanged2($event)"></pagination-controls>
+              
+            </div>
+        </div>
+    </div>
+  </div>

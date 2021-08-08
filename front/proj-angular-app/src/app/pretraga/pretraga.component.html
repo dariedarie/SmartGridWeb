@@ -1,0 +1,32 @@
+<table>
+    <tr>
+        <td>ID: </td>
+        <td><input type="text" class="form-control" placeholder="ID" id="idElementa"/></td>
+        <td>Naziv elementa: </td>
+        <td><input type="text" class="form-control" placeholder="Naziv" id="nazivElementa"/></td>
+    </tr>
+    <tr>    
+    <td>Tip: </td>
+        <td>
+        <select type="text" class="form-control" placeholder="Tip" id="tipElementa">
+                
+            <option value = "Transformator">Transformator</option>
+            <option value = "Prekidac">Prekidač</option>
+            <option value = "Osigurac">Osigurač</option>
+            <option value = "Diskonektor">Diskonektor</option>
+        
+        </select>
+        </td>
+        <td>&nbsp;</td>
+        <td><input class="btn btn-success" type="button" (click)="pretrazi()" value = "Pretraga"/></td>
+    </tr>
+    
+</table>
+
+<div [hidden]="filterElementi.length !== 0">
+    <hr/>
+    <h5 style="text-align: center;">Trenutno nema dostupnih elemenata mreže koja zadovoljavaju zadate parametre.</h5>
+</div>
+<div [hidden]="filterElementi.length === 0">
+    <app-pretraga-result [filterElementi]="filterElementi"></app-pretraga-result>
+</div>

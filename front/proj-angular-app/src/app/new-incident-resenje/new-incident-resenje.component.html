@@ -1,0 +1,43 @@
+
+<table>
+    <tr>
+        <td>Uzrok: </td>
+        <td><select type="text" [(ngModel)] = "resenje.uzrok" #uzrok>
+                
+            <option value = "Vreme">Vreme</option>
+            <option value = "Ljudski faktor">Ljudski faktor</option>
+            <option value = "Otkaz">Otkaz</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td>Poduzrok: </td>
+        <td><select type="text" [(ngModel)] = "resenje.poduzrok" #poduzrok>
+                
+            <option value = "Grmljavina">Grmljavina</option>
+            <option value = "Uragan">Uragan</option>
+            <option value = "Vetar">Vetar</option>
+            <option value = "Grad">Grad</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td>Tip konstrukcije: </td>
+        <td><select type="text" [(ngModel)] = "resenje.tip_konstrukcije" #tip_konstrukcije>                
+            <option value = "Podzemni">Podzemni</option>
+            <option value = "Nadzemni">Nadzemni</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td>Materijal: </td>
+        <td><select type="text" [(ngModel)] = "resenje.materijal" #tip_konstrukcije>                
+            <option value = "Metal">Metal</option>
+            <option value = "Plastika">Plastika</option>
+        </select></td>
+    </tr>
+    
+    <tr>
+        <td>&nbsp;</td>
+        <td><input type="button" class="btn btn-success" value = "Back" routerLink = "/app/new-incident-basic-inf"/></td>
+        <td><input type="button" class="btn btn-success" value = "Next" routerLink = "/app/new-incident-teams"/></td>
+        
+    </tr>
+</table>

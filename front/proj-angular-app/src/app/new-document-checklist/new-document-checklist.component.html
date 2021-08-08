@@ -1,0 +1,32 @@
+<h2>Checklist</h2>
+
+<table>
+    <tr>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "checklist.allOpsCompleted"  [checked]="checklist.allOpsCompleted == true"/> All operations completed
+            </label>
+        </td>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "checklist.allTagsRemoved"  [checked]="checklist.allTagsRemoved == true"/> All tags removed
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "checklist.groundingRemoved"  [checked]="checklist.groundingRemoved == true"/> Grounding removed
+            </label>
+        </td>
+        <td>
+            <label>
+            <input type="checkbox" [(ngModel)] = "checklist.readyForService"  [checked]="checklist.readyForService == true"/> Ready for service
+            </label>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="button" class="btn btn-success" value = "Back" routerLink = "/app/new-document-basic-inf"/></td>
+        <input type="button" class="btn btn-success" value = "Next" routerLink = "/app/new-document-media"/>
+    </tr>
+</table>

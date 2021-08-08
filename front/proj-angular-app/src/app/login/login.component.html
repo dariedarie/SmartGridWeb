@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Include the above in your HEAD tag -->
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<div class="main">
+    
+    
+  <div class="container">
+
+<div class="middle">
+    <div id="login">
+
+      <form #f="ngForm">
+
+        <fieldset class="clearfix">
+            <p class="paragraf_text">Username:</p>
+          <p ><span class="fa fa-user"></span><input Placeholder="Username" id="username" ></p><br> <!-- JS because of IE support; better: placeholder="Username" -->
+          <p class="paragraf_text">Password:</p>
+          <p><span class="fa fa-lock"></span><input Placeholder="Password" id="password" type="password"></p> <!-- JS because of IE support; better: placeholder="Password" -->
+          
+           <div>
+
+                              
+                              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="logIn()">Uloguj se</button>
+                              <button type="button" class="btn btn-primary" data-dismiss="modal" routerLink="">Back</button>
+                          </div>
+
+        </fieldset>
+<div class="clearfix"></div>
+      </form>
+
+      <div class="clearfix"></div>
+
+    </div> <!-- end login -->
+    <div class="logo"> TESLA       
+        <div class="clearfix"></div>
+    </div>
+    
+    </div>
+
+  </div>
+
+</div>
